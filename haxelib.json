@@ -1,0 +1,13 @@
+{
+  "name": "fen",
+  "url" : "https://github.com/nwawrzyniak/haxe-fen",
+  "license": "Public",
+  "tags": ["fen", "chess", "forsyth–edwards notation"],
+  "description": "A library for chess software to create FEN objects from FEN records. It grants easy access to the six fields of a FEN record without the need to write a parser. Also supplies a lot of other functions. Demo included.",
+  "version": "1.0.0",
+  "classPath": "src/",
+  "releasenote": "Initial release.",
+  "contributors": ["nwawrzyniak"],
+  "dependencies": {},
+  "main": "Demo"
+}

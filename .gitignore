@@ -1,0 +1,7 @@
+.idea/
+bin/
+docs/
+*.bat
+*.hxml
+*.zip
+*.iml
