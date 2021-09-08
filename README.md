@@ -1,5 +1,5 @@
 # haxe-fen (fen)
-A library to work with the Forsyth-Edwards Notation for chess position records in Haxe.
+A library to work with the Forsyth-Edwards Notation (FEN) for chess position records in Haxe.
 
 It grants easy access to the six fields of a FEN record without the need to write a parser.
 
