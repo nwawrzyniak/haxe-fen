@@ -20,7 +20,7 @@ Import classes and functions with ```import fen.*;```
 
 ## Documentation
 
-Currently, the documentation is only found in the classes themselves. An online documentation will follow.
+[The full documentation can be found here](https://www.nwawsoft.com/haxe-fen/pages/fen/index.html)
 
 ## About forks
 
