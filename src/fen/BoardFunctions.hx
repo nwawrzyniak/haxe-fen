@@ -1,31 +1,25 @@
 package fen;
 
-import fen.deps.util.*;
-import fen.deps.exceptions.*;
+import fen.util.*;
+import fen.exceptions.*;
 
 /**
-* Supplies functions to build and/or print a board representation from a FEN record string, object or field placement.
-*
-* This class is only intended to be used in conjunction with normal 8x8 chess boards.
-*
-* This class is not intended for other boards, e.g. the one used in Double Chess or Capablanca chess.
-*
-* If you think an important feature is missing, please consider making a pull request.
+Supplies functions to build or print board representations and create the field placement portion of FEN records from 
+board representations.
 **/
 class BoardFunctions {
     /**
     * Returns a board reprsentation string that contains 8 times 8 characters in dextrograd order from White's
     * perspective (starting with A8 in the upper left), separated by LF ("\n").
     *
-    * If fieldPlacement is not valid, the result is unspecified.
+    * If `fieldPlacement` is not valid, the result is mostly unspecified.
     *
-    * @param fieldPlacement the field placement portion of a FEN record.
+    * If `fieldPlacement` contains illegal characters, an `IllegalCharacterException` may be thrown.
+    *
+    * @param fieldPlacement The field placement portion of a FEN record.
     **/
     public static function buildBoardFromFieldPlacement(fieldPlacement:String):String {
-        // The board representation which is filled and returned
         var board:String = "";
-
-        // The index of the currently handled character in fieldPlacement.
         var charCounter:Int = 0;
         while (charCounter < fieldPlacement.length) {
             var currentChar:String = fieldPlacement.charAt(charCounter);
@@ -51,9 +45,11 @@ class BoardFunctions {
     * Returns a board reprsentation string that contains 8 times 8 characters in dextrograd order from White's
     * perspective (starting with A8 in the upper left), separated by LF ("\n").
     *
-    * If the FEN object was created from invalid inputs, the result is unspecified.
+    * If the field placement portion of `fEN` is invalid, the result is mostly unspecified.
     *
-    * @param fEN any FEN object.
+    * If the field placement portion of `fEN` contains illegal characters, an `IllegalCharacterException` may be thrown.
+    *
+    * @param fEN Any FEN object.
     **/
     public static function buildBoardFromFENObject(fEN:FEN):String {
         return buildBoardFromFieldPlacement(fEN.getFieldPlacement());
@@ -63,9 +59,11 @@ class BoardFunctions {
     * Returns a board reprsentation string that contains 8 times 8 characters in dextrograd order from White's
     * perspective (starting with A8 in the upper left), separated by LF ("\n").
     *
-    * If the FEN record fENString is invalid, the result is unspecified.
+    * If `fENString` is invalid, the result is mostly unspecified.
     *
-    * @param fENString any FEN record.
+    * If `fENString` contains illegal characters, an `IllegalCharacterException` may be thrown.
+    *
+    * @param fENString Any FEN record.
     **/
     public static function buildBoardFromFENString(fENString:String):String {
         return buildBoardFromFieldPlacement(new FEN(fENString).getFieldPlacement());
@@ -74,13 +72,13 @@ class BoardFunctions {
     /**
     * Returns the field placement portion usable in FEN record strings from a visualization.
     *
-    * If no borderMode is specified, BorderMode.OFF is used.
+    * If `visualization` is invalid, the result is mostly unspecified.
     *
-    * If visualization is invalid, the result is mostly unspecified.
+    * If `visualization` contains illegal characters, an `IllegalCharacterException` may be thrown.
     *
-    * If the visualization has data for more than eight rows an UnexpectedRowAmountException is thrown.
+    * If `borderMode` is not specified, `BorderMode.OFF` is used.
     *
-    * If borderMode is invalid an UnknownBorderModeException is thrown.
+    * If `borderMode` is specified, but invalid, an `UnknownBorderModeException` is thrown.
     *
     * @param visualization  A String representing all fields of the board in dextrograd order from White's perspective.
     * It needs to be LF separated (\n) after every row (therefore after every eight characters).
@@ -124,13 +122,17 @@ class BoardFunctions {
     /**
     * Prints a visualization of the board from a board string.
     *
-    * If board is invalid the result is unspecified.
+    * If `board` is invalid, the result is mostly unspecified.
     *
-    * If borderMode is not specified this function behaves as if BorderMode.OFF was specified.
+    * If `board` contains data for too many rows, an `UnexpectedRowAmountException` is thrown.
+    *
+    * If `borderMode` is not specified this function behaves as if `BorderMode.OFF` was specified.
+    *
+    * If `borderMode` is specified, but invalid, an `UnknownBorderModeException` is thrown.
     *
     * @param board  A String representing all fields of the board in dextrograd order from White's perspective.
     * It needs to be LF separated (\n) after every row (therefore after every eight characters).
-    * @param borderMode any border mode.
+    * @param borderMode Any border mode.
     **/
     public static function printBoard(board:String, ?borderMode:BorderMode):Void {
         if (borderMode == null || borderMode == BorderMode.OFF) Sys.println(board);
@@ -158,12 +160,16 @@ class BoardFunctions {
     /**
     * Prints a visualization of the board from a the field placement portion of a FEN record.
     *
-    * If fieldPlacement is invalid the result is unspecified.
+    * If `fieldPlacement` is invalid, the result is mostly unspecified.
     *
-    * If borderMode is not specified this function behaves as if BorderMode.OFF was specified.
+    * If `fieldPlacement` contains data for too many rows, an `UnexpectedRowAmountException` is thrown.
+    *
+    * If `borderMode` is not specified this function behaves as if `BorderMode.OFF` was specified.
+    *
+    * If `borderMode` is specified, but invalid, an `UnknownBorderModeException` is thrown.
     *
     * @param fieldPlacement Any valid field placement portion of a FEN record.
-    * @param borderMode any border mode.
+    * @param borderMode Any border mode.
     **/
     public static function printBoardFromFieldPlacement(fieldPlacement:String, ?borderMode:BorderMode):Void {
         printBoard(buildBoardFromFieldPlacement(fieldPlacement), borderMode);
@@ -172,12 +178,17 @@ class BoardFunctions {
     /**
     * Prints a visualization of the board from a FEN object.
     *
-    * If the field placement portion of fEN is invalid the result is unspecified.
+    * If the field placement portion of `fEN` is invalid, the result is mostly unspecified.
     *
-    * If borderMode is not specified this function behaves as if BorderMode.OFF was specified.
+    * If the field placement portion of `fEN` contains data for too many rows, an `UnexpectedRowAmountException` is
+    * thrown.
+    *
+    * If `borderMode` is not specified this function behaves as if `BorderMode.OFF` was specified.
+    *
+    * If `borderMode` is specified, but invalid, an `UnknownBorderModeException` is thrown.
     *
     * @param fEN    Any valid FEN object.
-    * @param borderMode any border mode.
+    * @param borderMode Any border mode.
     **/
     public static function printBoardFromFENObject(fEN:FEN, ?borderMode:BorderMode):Void {
         printBoardFromFieldPlacement(fEN.getFieldPlacement(), borderMode);
@@ -186,12 +197,16 @@ class BoardFunctions {
     /**
     * Prints a visualization of the board from a FEN record string.
     *
-    * If fENString is invalid the result is unspecified.
+    * If `fENString` is invalid, the result is mostly unspecified.
     *
-    * If borderMode is not specified this function behaves as if BorderMode.OFF was specified.
+    * If `fENString` contains data for too many rows, an `UnexpectedRowAmountException` is thrown.
+    *
+    * If `borderMode` is not specified this function behaves as if `BorderMode.OFF` was specified.
+    *
+    * If `borderMode` is specified, but invalid, an `UnknownBorderModeException` is thrown.
     *
     * @param fENString  Any valid FEN record string.
-    * @param borderMode any border mode.
+    * @param borderMode Any border mode.
     **/
     public static function printBoardFromFullFENString(fENString:String, ?borderMode:BorderMode):Void {
         printBoardFromFieldPlacement(new FEN(fENString).getFieldPlacement(), borderMode);

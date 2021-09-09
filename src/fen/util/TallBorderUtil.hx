@@ -1,5 +1,6 @@
-package fen.deps.util;
+package fen.util;
 
+@:dox(hide)
 class TallBorderUtil {
     public static function printHeaderTall() {
         Sys.println("┌─┬─┬─┬─┬─┬─┬─┬─┐");

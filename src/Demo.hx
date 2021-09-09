@@ -8,8 +8,14 @@ import fen.*;
 * To understand the fen library you can either read though the comments or just run the Demo and check the command
 * line output.
 **/
+@:dox(hide)
 class Demo {
-    static function main() {
+    /**
+    * The main function of the Demo.
+    *
+    * Shows a lot of function calls in practice.
+    **/
+    public static function main() {
         /*
          *  1) Storing and accessing FEN data.
          */
@@ -93,8 +99,7 @@ class Demo {
         Sys.println("Lastly, there is creating the field placement portion for a FEN record from a visualization.\n" +
                 "If the visualization had a border, the BorderMode needs to be specified.\n" +
                 "If the visualization has no border, this can be omitted.\n" +
-                "The following 3 FEN records will all look exactly the same, but the calls used different " +
-                "BorderModes.\n");
+                "The following 3 FEN records are created with different BorderMode specified.\n");
 
         // create the field placement portion of a FEN record from a visualization
         var boardGeneratedFieldPlacement:String = BoardFunctions.createFieldPlacementFromBoardString(fen1.getBoard());
@@ -114,6 +119,13 @@ class Demo {
         Sys.println(boardGeneratedFieldPlacementModeTall);
     }
 
+    /**
+    * Returns a manually created test board with in the default chess starting position with the "TALL" BorderMode.
+    *
+    * This is used to test the function `BoardFunctions.createFieldPlacementFromBoardString(board:String,
+    * BorderMode.TALL)`.
+    **/
+    @:dox(hide)
     static function getTestBoardWithTallBorder() {
         return  "┌─┬─┬─┬─┬─┬─┬─┬─┐\n" +
                 "│r│n│b│q│k│b│n│r│\n" +

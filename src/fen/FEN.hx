@@ -2,10 +2,11 @@ package fen;
 
 /**
 * Represents a FEN record object.
-*
-* Implementation details and comments are taken from https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
 **/
 class FEN {
+    // Implementation details and comments are taken from Wikipedia:
+    // https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+
     /**
     * Piece placement (from White's perspective). Each rank is described, starting with rank 8 and ending with rank 1;
     * within each rank, the contents of each square are described from file "a" through file "h". Following the Standard
@@ -48,7 +49,7 @@ class FEN {
     /**
     * Constructor. Creates a new FEN object from a FEN string.
     *
-    * If fENString is invalid the result is unspecified.
+    * If `fENString` is invalid the result is unspecified.
     *
     * @param fENString  Any valid FEN record.
     **/
@@ -96,16 +97,21 @@ class FEN {
     /**
     * Splits a FEN record string at its specified delimiter " " (whitespace).
     *
-    * Returns an Array<String> containing the six individual fields of the FEN record.
+    * Returns an `Array<String>` containing the six individual fields of the FEN record.
     *
-    * split(fENString)[0] contains the field placement.
-    * split(fENString)[1] contains the active color.
-    * split(fENString)[2] contains the castling availability.
-    * split(fENString)[3] contains the en passant target square.
-    * split(fENString)[4] contains the halfmove clock.
-    * split(fENString)[5] contains the fullmove number.
+    * `split(fENString)[0]` contains `fieldPlacement`.
     *
-    * For illegal FEN record strings the result is unspecifed.
+    * `split(fENString)[1]` contains `activeColor`.
+    *
+    * `split(fENString)[2]` contains `castlingAvailability`.
+    *
+    * `split(fENString)[3]` contains `enPassant`.
+    *
+    * `split(fENString)[4]` contains `halfmoveClock`.
+    *
+    * `split(fENString)[5]` contains `fullmoveNumber`.
+    *
+    * For invalid FEN records the result is unspecifed.
     *
     * @param fENString  Any valid FEN record.
     **/
@@ -124,6 +130,7 @@ class FEN {
     * Returns a string representation of the full board in dextrograd order.
     *
     * White pieces are depicted as upper case lettersan black pieces as lower case letters, just like in a FEN record.
+    *
     * Empty fields are depicted as spaces, not with a number.
     *
     * Rows are seperated by "\n" (LF).
@@ -141,6 +148,8 @@ class FEN {
 
     /**
     * Replaces the field placement portion of the FEN object.
+    *
+    * @param fieldPlacement the new field placement.
     **/
     public function setFieldPlacement(fieldPlacement:String):Void {
         this.fieldPlacement = fieldPlacement;
@@ -155,6 +164,8 @@ class FEN {
 
     /**
     * Replaces the active color portion of the FEN object.
+    *
+    * @param activeColor the new active color.
     **/
     public function setActiveColor(activeColor:String):Void {
         this.activeColor = activeColor;
@@ -169,6 +180,8 @@ class FEN {
 
     /**
     * Replaces the castling availability portion of the FEN object.
+    *
+    * @param castlingAvailability the new castling availability value.
     **/
     public function setCastlingAvailability(castlingAvailability:String):Void {
         this.castlingAvailability = castlingAvailability;
@@ -183,6 +196,8 @@ class FEN {
 
     /**
     * Replaces the en passant target square portion of the FEN object.
+    *
+    * @param enPassant the new en passant target sqaure value.
     **/
     public function setEnPassant(enPassant:String):Void {
         this.enPassant = enPassant;
@@ -197,6 +212,8 @@ class FEN {
 
     /**
     * Replaces the halfmove clock portion of the FEN object.
+    *
+    * @param halfmoveClock the new halfmove clock value.
     **/
     public function setHalfmoveClock(halfmoveClock:Int):Void {
         this.halfmoveClock = halfmoveClock;
@@ -211,6 +228,8 @@ class FEN {
 
     /**
     * Replaces the fullmove number portion of the FEN object.
+    *
+    * @param fullmoveNumber the new fullmove number.
     **/
     public function setFullmoveNumber(fullmoveNumber:Int):Void {
         this.fullmoveNumber = fullmoveNumber;

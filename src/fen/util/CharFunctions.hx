@@ -1,5 +1,6 @@
-package fen.deps.util;
+package fen.util;
 
+@:dox(hide)
 class CharFunctions {
     public static function isLetter(char:String):Bool {
         if (char.length == 1) {

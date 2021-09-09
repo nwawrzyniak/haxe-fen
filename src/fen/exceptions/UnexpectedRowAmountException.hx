@@ -1,4 +1,4 @@
-package fen.deps.exceptions;
+package fen.exceptions;
 
 import haxe.Exception;
 
