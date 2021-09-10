@@ -1,4 +1,4 @@
-# haxe-fen (fen)
+# fen (haxe-fen)
 
 A library to work with the Forsyth-Edwards Notation (FEN) for chess position records in Haxe.
 
