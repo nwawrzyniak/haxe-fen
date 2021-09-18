@@ -1,4 +1,4 @@
-package fen;
+package chess.fen;
 
 /**
 * An enum containing all currently supported border modes.

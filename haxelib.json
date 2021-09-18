@@ -4,10 +4,10 @@
   "license": "Public",
   "tags": ["fen", "chess", "forsyth–edwards notation"],
   "description": "A library to work with the Forsyth-Edwards Notation (FEN) for chess position records in Haxe.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "classPath": "src/",
-  "releasenote": "Added documentation.",
+  "releasenote": "Changed package structure. Added serialization/deserialization to and from .fen files.",
   "contributors": ["nwawrzyniak"],
   "dependencies": {},
-  "main": "Demo"
+  "main": "chess.demo.FENDemo"
 }

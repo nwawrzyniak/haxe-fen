@@ -1,4 +1,4 @@
-package fen;
+package chess.fen;
 
 /**
 * Represents a FEN record object.
@@ -129,7 +129,7 @@ class FEN {
     /**
     * Returns a string representation of the full board in dextrograd order.
     *
-    * White pieces are depicted as upper case lettersan black pieces as lower case letters, just like in a FEN record.
+    * White pieces are depicted as upper case letters, black pieces as lower case letters.
     *
     * Empty fields are depicted as spaces, not with a number.
     *
@@ -233,5 +233,48 @@ class FEN {
     **/
     public function setFullmoveNumber(fullmoveNumber:Int):Void {
         this.fullmoveNumber = fullmoveNumber;
+    }
+
+    /**
+    * Serializes the FEN object to a `.fen` file.
+    *
+    * Works only for sys targets.
+    * Read more about sys targets here https://haxe.org/manual/std-sys.html.
+    *
+    * @param filePath the file to save to, either as relative or absolute path, with file extension.
+    **/
+    public function serialize(filePath:String):Void {
+        #if sys
+        sys.io.File.saveContent(filePath, getFENString());
+        return;
+        #else
+        trace("This function only works on targets which support the sys package.");
+        #end
+    }
+
+    /**
+    * Creates a FEN object from a `.fen` file.
+    *
+    * Works only for sys targets.
+    * Read more about sys targets here https://haxe.org/manual/std-sys.html.
+    *
+    * For illegal input files, the result is mostly unspecified.
+    *
+    * If the file specified in `filePath` does not exist, `null` is returned.
+    *
+    * If the target language does not support the sys API, `null` is returned.
+    *
+    * @param filePath the file to load, either as relative or absolute path, with file extension.
+    **/
+    public static function deserialize(filePath:String):FEN {
+        #if sys
+        if (sys.FileSystem.exists(filePath)) {
+            return new FEN(sys.io.File.getContent(filePath));
+        }
+        return null;
+        #else
+        trace("This function only works on targets which support the sys API.");
+        return null;
+        #end
     }
 }

@@ -1,4 +1,4 @@
-package fen.exceptions;
+package chess.fen.exceptions;
 
 import haxe.Exception;
 

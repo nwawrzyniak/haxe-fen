@@ -1,4 +1,4 @@
-package fen.util;
+package chess.fen.util;
 
 @:dox(hide)
 class TallBorderUtil {

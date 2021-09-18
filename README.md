@@ -10,17 +10,17 @@ Currently only standard FEN is implemented. Shredder-FEN and X-FEN may be added 
 
 ## Installation
 
-Install this library via haxelib by executing `haxelib install fen`.
+Install this library with haxelib by executing `haxelib install fen`.
 
 ## Usage
 
 Add `--library fen` or `--L fen` as compiler arguments or add the line to a `.hxml` file that is used for building.
 
-Import classes and functions with `import fen.*;`
+Import classes and functions with `import chess.fen.*;`
 
 ## Documentation
 
-[The full documentation can be found here](https://www.nwawsoft.com/haxe-fen/pages/fen/index.html)
+[The full documentation can be found here](https://www.nwawsoft.com/haxe-fen/pages/chess/fen/index.html)
 
 ## About forks
 

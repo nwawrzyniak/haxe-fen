@@ -1,7 +1,7 @@
-package fen;
+package chess.fen;
 
-import fen.util.*;
-import fen.exceptions.*;
+import chess.fen.util.*;
+import chess.fen.exceptions.*;
 
 /**
 Supplies functions to build or print board representations and create the field placement portion of FEN records from 
