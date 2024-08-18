@@ -20,7 +20,7 @@ Import classes and functions with `import chess.fen.*;`
 
 ## Documentation
 
-[The full documentation can be found here](https://www.nwawsoft.com/haxe-fen/pages/chess/fen/index.html)
+[The full documentation can be found here](https://www.nwawsoft.com/haxe-fen/pages/chess/fen/)
 
 ## About forks
 
